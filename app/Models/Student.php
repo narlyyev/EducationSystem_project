@@ -13,6 +13,7 @@ class Student extends Model
         'id',
     ];
 
+
     public $timestamps = false;
 
     public function classroom() {

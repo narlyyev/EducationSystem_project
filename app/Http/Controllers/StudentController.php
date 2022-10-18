@@ -52,7 +52,7 @@ class StudentController extends Controller
             ->get();
         $courses = Course::orderBy('name')
             ->get();
-        $teachers = Teacher::orderBy('first_name', 'last_name')
+        $teachers = Teacher::orderBy('first_name')
             ->get();
 
         return view('student.index')

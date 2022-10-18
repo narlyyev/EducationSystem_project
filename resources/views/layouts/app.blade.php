@@ -12,6 +12,9 @@
 
 </head>
 <body class="bg-light">
-    @include('app.nav')
+    <div class="container-xl">
+        @include('app.nav')
+        @yield('content')
+    </div>
 </body>
 </html>
