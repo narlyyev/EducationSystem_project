@@ -1,7 +1,8 @@
-<div class="bg-secondary bg-opacity-10 p-3 border-bottom border-dark">
-    <div class="row p-3">
-        <div class="col-6">
+<div class="bg-secondary bg-opacity-10 mb-4">
+    <div class="row p-4">
+        <div class="col-6 text-center">
             <div class="h5 pb-3">
+                <div class="h3 text-center text-danger pb-3">About student</div>
                 <span class="text-success">First name:</span> {{$student->first_name}} <br>
                 <span class="text-success">Last name:</span> {{$student->last_name}}
             </div>
@@ -20,8 +21,9 @@
                 @endif
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 text-center">
             <div class="h5 pb-3">
+                <div class="h3 text-center text-success pb-3">About course</div>
                 <span class="text-danger">Course:</span> {{$student->course->name}} <br>
                 <span class="text-danger">Price:</span> {{$student->course->price}} <span>TMT</span>
             </div>

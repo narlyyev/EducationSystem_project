@@ -6,8 +6,8 @@
     <div class="container-xl py-3">
         <div class="row">
             <div class="col-md-4 col-xl-3">
-                <div class="display-1 w-100">
-                    Hello World
+                <div>
+                    @include('app.filter')
                 </div>
             </div>
             <div class="col">

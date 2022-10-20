@@ -21,12 +21,14 @@ return new class extends Migration
             $table->foreign('teacher_id')->references('id')->on('teachers')->cascadeOnDelete();
             $table->unsignedBigInteger('classroom_id')->index();
             $table->foreign('classroom_id')->references('id')->on('classrooms')->cascadeOnDelete();
+            $table->unsignedBigInteger('registration_id');
+            $table->foreign('registration_id')->references('id')->on('registrations')->cascadeOnDelete();
             $table->string('first_name')->default(0);
             $table->string('last_name')->default(0);
             $table->string('phone')->default(0);
-            $table->string('phone_2')->default(0);
-            $table->date('birthday');
-            $table->boolean('gender')->default(0)->index();
+            $table->string('phone_2')->nullable();
+            $table->date('birthday')->useCurrent();
+            $table->tinyInteger('gender')->default(0);
         });
     }
 

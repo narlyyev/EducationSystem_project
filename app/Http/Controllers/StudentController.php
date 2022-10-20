@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use App\Models\Course;
+use App\Models\Registration;
 use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -34,18 +35,22 @@ class StudentController extends Controller
             ->when($teacherId, function ($query, $teacherId) {
                 $query->where('teacher_id', $teacherId);
             })
+            ->when($registrationId, function ($query, $registrationId) {
+                $query->where('registration_id', $registrationId);
+            })
             ->when($gender, function ($query) {
                 $query->where('gender', 1);
             })
-            ->with(['classroom', 'course', 'teacher'])
+            ->with(['classroom', 'course', 'registration'])
             ->orderBy('id', 'desc')
-            ->simplePaginate(50);
+            ->simplePaginate(10);
 
         $students = $students->appends([
             'classroom_id' => $classroomId,
             'course_id' => $courseId,
-            'teacher_id' => $teacherId,
+            'registration_id' => $registrationId,
             'gender' => $gender,
+            'teacher_id' => $teacherId,
         ]);
 
         $classrooms = Classroom::orderBy('name')
@@ -54,14 +59,22 @@ class StudentController extends Controller
             ->get();
         $teachers = Teacher::orderBy('first_name')
             ->get();
+        $teachers = Registration::orderBy('id')
+            ->get();
 
         return view('student.index')
             ->with([
                 'classrooms' => $classrooms,
+                'registrations' => $registrations,
                 'courses' => $courses,
                 'teachers' => $teachers,
                 'students' => $students,
                 'gender' => $gender,
+                'classroom_id' => $classroomId,
+                'course_id' => $courseId,
+                'teacher_id' => $teacherId,
+                'registration_id' => $registrationId,
+
             ]);
     }
 
