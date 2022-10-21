@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Teacher::factory(20)->create();
-        Student::factory(500)->create();
         Registration::factory(500)->create();
+        Student::factory(500)->create();
     }
 }

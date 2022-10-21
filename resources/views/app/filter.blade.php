@@ -1,6 +1,6 @@
 <form action="{{ url()->current() }}" method="get">
     <div class="mb-3">
-        <label for="course" class="form-label">Courses</label>
+        <label for="course" class="form-label fw-bold">Courses</label>
         <select class="form-select" name="course_id" id="course">
             <option value selected>-</option>
             @foreach($courses as $course)
@@ -11,7 +11,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="classroom" class="form-label">Classroom</label>
+        <label for="classroom" class="form-label fw-bold">Classroom</label>
         <select class="form-select" name="classroom_id" id="classroom">
             <option value selected>-</option>
             @foreach($classrooms as $classroom)
@@ -22,7 +22,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="teacher" class="form-label">Teacher</label>
+        <label for="teacher" class="form-label fw-bold">Teacher</label>
         <select class="form-select" name="teacher_id" id="teacher">
             <option value selected>-</option>
             @foreach($teachers as $teacher)
@@ -31,6 +31,30 @@
                     {{ $teacher->last_name }}
                 </option>
             @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="registration" class="form-label fw-bold">Registration</label>
+        <select class="form-select" name="registration_id" id="registration">
+            <option value selected>-</option>
+            @foreach($registrations as $registration)
+                <option value="{{ $registration->id }}" {{$registration->id == $registration_id ? 'selected' : ''}}>
+                    {{ $registration->$registration}}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="mr-sm-2 fw-bold" for="inlineFormCustomSelect">Gender</label>
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option value="1"
+                    {{ isset($gender) ? 'selected': '' }}>
+                Male
+            </option>
+            <option value="2"
+                    {{ isset($gender) ? 'selected': '' }}>
+                Female
+            </option>
         </select>
     </div>
     <div class="row g-2">

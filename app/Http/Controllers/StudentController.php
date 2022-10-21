@@ -18,13 +18,14 @@ class StudentController extends Controller
             'classroom_id' => 'nullable|integer|min:1',
             'course_id' => 'nullable|integer|min:1',
             'teacher_id' => 'nullable|integer|min:1',
-            'gender' => 'nullable|boolean',
+            'gender' => 'nullable|integer|min:1',
         ]);
 
         $classroomId = $request->has('classroom_id') ? $request->classroom_id : null;
         $courseId = $request->has('course_id') ? $request->course_id : null;
         $teacherId = $request->has('teacher_id') ? $request->teacher_id : null;
         $gender = $request->has('gender') ? $request->gender : null;
+        $registrationId = $request->has('registration') ? $request->registration : null;
 
         $students = Student::when($classroomId, function ($query, $classroomId) {
             $query->where('classroom_id', $classroomId);
@@ -59,8 +60,9 @@ class StudentController extends Controller
             ->get();
         $teachers = Teacher::orderBy('first_name')
             ->get();
-        $teachers = Registration::orderBy('id')
+        $registrations = Registration::orderBy('id')
             ->get();
+
 
         return view('student.index')
             ->with([
@@ -74,7 +76,6 @@ class StudentController extends Controller
                 'course_id' => $courseId,
                 'teacher_id' => $teacherId,
                 'registration_id' => $registrationId,
-
             ]);
     }
 

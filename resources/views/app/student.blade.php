@@ -31,6 +31,10 @@
                 <span class="text-danger">Teacher's name:</span> {{$student->teacher->first_name}}
                 {{$student->teacher->last_name}}
             </div>
+            <div class="h5 pb-3">
+                <span class="text-danger">Registration:</span>
+                {{$registration_id}}
+            </div>
             <div class="h5">
                 <span class="text-danger">Classroom:</span> {{$student->classroom->name}} <br>
             </div>

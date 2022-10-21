@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrapFive();
-        Model::preventLazyLoading(!app()->isProduction());
+        Model::preventLazyLoading(app()->isProduction());
 //        Model::preventLazyLoading(!app()->isProduction());
 //
 //        View::composer('app.nav', function ($view) {
